@@ -1,0 +1,13 @@
+# Installed by dsh as a bundle. Override this row in the profile patch by id
+# when you want different settings; a matching override replaces the whole
+# `config` object.
+- insert:
+    - id: qqbot-interceptor
+      name: dsh-qqbot-interceptor
+      config:
+        mode: intercept
+        host: 127.0.0.1
+        port: 7333
+        ringSize: 500
+        ackInteractions: true
+        allowRelease: true

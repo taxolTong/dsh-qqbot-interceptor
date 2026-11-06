@@ -1,0 +1,50 @@
+{
+  "name": "dsh-qqbot-interceptor",
+  "version": "0.1.0",
+  "description": "Intercept the QQ Bot message flow for dsh: hold inbound messages, tap outbound sends, and expose inbox/send APIs without paying dsh context tokens.",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "cordis.patch.yml",
+    "README.md",
+    "examples"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && tsc-alias -p tsconfig.json -f",
+    "test": "tsx --test test/*.test.ts",
+    "test:node": "tsc -p tsconfig.test.json && tsc-alias -p tsconfig.test.json -f && node test-dist/test/interceptor.test.js && node test-dist/test/http.test.js",
+    "demo": "node examples/fixed-reply.mjs"
+  },
+  "engines": {
+    "node": ">=20.3.0"
+  },
+  "peerDependencies": {
+    "@tencent-connect/qqbot-nodejs": ">=1.0.5"
+  },
+  "peerDependenciesMeta": {
+    "@tencent-connect/qqbot-nodejs": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@tencent-connect/qqbot-nodejs": "^1.0.5",
+    "@types/node": "^22.15.0",
+    "tsc-alias": "^1.9.10",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
