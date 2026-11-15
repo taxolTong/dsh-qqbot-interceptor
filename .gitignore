@@ -4,3 +4,4 @@ test-dist/
 .pnpm-store/
 *.log
 dist/
+.env
